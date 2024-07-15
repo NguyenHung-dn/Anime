@@ -8,13 +8,11 @@ export default function Home() {
   const [animeTitle, setAnimeTitle] = useState("");
   const [animeList, setAnimeList] = useState([]);
   const [animeData, setAnimeData] = useState({});
-  console.log("this is a commit test");
   const resetAnimeData = () => {
     setAnimeData({});
   };
-
   const handleCardClick = (id) => {
-    const url = `https://api.jikan.moe/v4/anime/${id}/full`;
+    const url = `${API_URL_PUBLIC}/${id}/full`;
     axios.get(url).then((response) => {
       setAnimeData(response.data.data);
     });
@@ -25,7 +23,7 @@ export default function Home() {
   };
 
   const handleSearchAnime = () => {
-    const url = `https://api.jikan.moe/v4/anime?q=${animeTitle}`;
+    const url = `${API_URL_PUBLIC}?q=${animeTitle}`;
     axios.get(url).then((response) => {
       setAnimeList(response.data.data);
     });
