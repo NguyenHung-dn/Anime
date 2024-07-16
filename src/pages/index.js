@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Head from "next/head";
+
 import { useState } from "react";
 import axios from "axios";
 import AnimeList from "@/components/AnimeList";
@@ -31,6 +33,25 @@ export default function Home() {
 
   return (
     <main className="lg:flex w-screen h-screen">
+      <Head>
+        <title>My anime page</title>
+        <meta property="og:title" content="Homepage" />
+        <meta property="og:description" content="Look up your anime" />
+        <meta
+          property="og:image"
+          content="/images/background-image-anime.jfif"
+        />
+        <meta property="og:url" content="https://anime-self-ten.vercel.app/" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="image card" />
+        <meta name="twitter:title" content="Homepage" />
+        <meta name="twitter:description" content="Look up your anime" />
+        <meta
+          name="twitter:image"
+          content="https://anime-self-ten.vercel.app/"
+        />
+      </Head>
       {animeData.mal_id && (
         <Modal resetAnimeData={resetAnimeData} animeData={animeData} />
       )}
